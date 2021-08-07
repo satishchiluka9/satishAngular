@@ -8,7 +8,8 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductsComponent implements OnInit {
  
-  products: any = []
+  products: any = [];
+  error = null;
 
   constructor(private productService:ProductService) { }
 
@@ -20,6 +21,10 @@ export class ProductsComponent implements OnInit {
     this.productService.getProducts().subscribe((response) => {
      this.products = response;
      //console.log(response);
+    },
+    (error) => {
+      console.log(error)
+      this.error = error.message
     })
   }
 }

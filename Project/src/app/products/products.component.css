@@ -5,3 +5,9 @@
 .itemImage{
     max-height:160px ;
 }
+.title{
+    text-align: center;
+}
+.price{
+    text-align: center;
+}
