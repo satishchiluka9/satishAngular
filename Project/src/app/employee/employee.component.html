@@ -1,0 +1,89 @@
+<div class="container"> 
+  <h1>Employee Form</h1>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+   <div class="form-group">
+   <label for="name">Name:</label>
+     <input type="text" pattern="" class="form-control" id="name" formControlName="name" required>
+   
+   <div class="alert alert-danger" [hidden]="name.valid||name.pristine">Enter a valid name</div>
+    
+   </div>
+   
+   <div class="form-group">
+   <label for="designation">Designation:</label>
+     <input type="text" class="form-control" id="designation" formControlName="designation" required>
+ 
+     <div class="alert alert-danger" *ngIf="(designation.dirty||designation.touched) && designation.invalid && designation.errors.required">Designation is required</div>
+   </div>
+ 
+ <div class="form-group">
+   <label for="sex">Sex:</label>
+     <input type="radio"  value="Male" formControlName="sex" required>Male
+     <input type="radio"  value="Female" formControlName="sex" required>Female
+ 
+     <div class="alert alert-danger" *ngIf="(sex.dirty||sex.touched) && sex.invalid && sex.errors.required">Your Sex is required</div>
+   </div>
+ 
+   <div class="form-group">
+   <label for="eMailId">E-mail Id:</label>
+     <input type="email" pattern=".+@+.+.com" class="form-control" id="eMailId" formControlName="eMailId" required>
+ 
+     <div [hidden]="eMailId.valid || eMailId.pristine" class="alert alert-danger">Enter a valid e-mail</div>
+   </div>
+ 
+   <div class="form-group">
+   <label for="dob">DOB:</label>
+     <input type="date" class="form-control" id="dob" formControlName="dob" required>
+ 
+     <div class="alert alert-danger" *ngIf="(dob.dirty || dob.touched) && dob.invalid && dob.errors.required">DOB is required</div>
+   </div>
+ 
+   <div class="form-group">
+   <label for="name">Domain:</label>
+   <select class="form-control" id="domain" formControlName="domain" required>
+   <option *ngFor="let dom of domains" [value]="dom">{{dom}}</option>
+   </select>
+ 
+   <div class="alert alert-danger" *ngIf="(domain.dirty || domain.touched) && domain.invalid && domain.errors.required">Domain is required</div>
+   </div>
+ 
+   <div formGroupName="address">
+     <h3>Address:</h3>
+     <div class="form-group">
+      <label for="street">Street:</label>
+      <input type="text" class="form-control" id="street" formControlName="street">
+   </div>
+ 
+   <div class="form-group">
+     <label for="city">City:</label>
+     <input type="text" class="form-control" id="city" formControlName="city">
+   </div>
+   
+   <div class="form-group">
+     <label for="state">State:</label>
+     <input type="text" class="form-control" id="state" formControlName="state">
+   </div>
+ 
+   <div class="form-group">
+     <label for="zip">ZIP:</label>
+     <input type="text" class="form-control" id="zip" formControlName="zip">
+   </div>  
+     </div>
+ <!-- <button type="submit" class="btn btn-success"  >Submit</button> -->
+ 
+   <button type="submit" class="btn btn-success" [disabled]="!employeeForm.valid" >Submit</button>
+   <p style="padding-left:5em"></p>
+   <button type="reset" class="btn btn-success" (click)="newEmployee()">
+     Reset
+   </button>
+ 
+  </form>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
