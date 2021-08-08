@@ -1,0 +1,14 @@
+input.ng-invalid.ng-touched{
+    border: 1px solid #f00;
+}
+.btn-style{
+    margin:20px 0;
+}
+label{
+ margin: 10px 0;
+ font-weight: bold;
+}
+h3{
+    padding: 10px 0;
+}
+.submit-btn{ margin-right: 10px;}

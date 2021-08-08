@@ -4,6 +4,7 @@
    <div class="form-group">
    <label for="name">Name:</label>
      <input type="text" pattern="" class="form-control" id="name" formControlName="name" required>
+     <!-- <span class="help-block" *ngIf="!singupForm.get(username).valid && singupForm.get('username').touched">Please enter valid username</span> -->
    
    <div class="alert alert-danger" [hidden]="name.valid||name.pristine">Enter a valid name</div>
     
@@ -13,7 +14,7 @@
    <label for="designation">Designation:</label>
      <input type="text" class="form-control" id="designation" formControlName="designation" required>
  
-     <div class="alert alert-danger" *ngIf="(designation.dirty||designation.touched) && designation.invalid && designation.errors.required">Designation is required</div>
+     <div class="alert alert-danger" *ngIf="(designation.touched) && designation.invalid && designation.errors.required">Designation is required</div>
    </div>
  
  <div class="form-group">
@@ -29,13 +30,6 @@
      <input type="email" pattern=".+@+.+.com" class="form-control" id="eMailId" formControlName="eMailId" required>
  
      <div [hidden]="eMailId.valid || eMailId.pristine" class="alert alert-danger">Enter a valid e-mail</div>
-   </div>
- 
-   <div class="form-group">
-   <label for="dob">DOB:</label>
-     <input type="date" class="form-control" id="dob" formControlName="dob" required>
- 
-     <div class="alert alert-danger" *ngIf="(dob.dirty || dob.touched) && dob.invalid && dob.errors.required">DOB is required</div>
    </div>
  
    <div class="form-group">
@@ -63,20 +57,13 @@
      <label for="state">State:</label>
      <input type="text" class="form-control" id="state" formControlName="state">
    </div>
- 
-   <div class="form-group">
-     <label for="zip">ZIP:</label>
-     <input type="text" class="form-control" id="zip" formControlName="zip">
-   </div>  
+   
      </div>
  <!-- <button type="submit" class="btn btn-success"  >Submit</button> -->
- 
-   <button type="submit" class="btn btn-success" [disabled]="!employeeForm.valid" >Submit</button>
-   <p style="padding-left:5em"></p>
-   <button type="reset" class="btn btn-success" (click)="newEmployee()">
-     Reset
-   </button>
- 
+  <div class="btn-style">
+   <button type="submit" class="btn btn-success submit-btn" [disabled]="!employeeForm.valid" >Submit</button>
+   <button type="reset" class="btn btn-success" (click)="newEmployee()"> Reset</button>
+  </div>
   </form>
  </div>
  

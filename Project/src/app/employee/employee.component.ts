@@ -10,6 +10,8 @@ import { EmployeeService } from '../services/employee.service';
 })
 export class EmployeeComponent implements OnInit {
 
+
+  
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private router:Router) { }
   domains = ['BFSI', 'Retail and Distribution', 'Manufacturing', 'Telecom',
     'Life science and Healthcare', 'High Tech', 'Energy and Utilities',
@@ -19,20 +21,20 @@ export class EmployeeComponent implements OnInit {
       designation: ['', Validators.required],
       sex: ['', Validators.required],
       eMailId: ['', Validators.required],
-      dob: ['', Validators.required],
       domain: ['', Validators.required],
       address: this.fb.group({
         street: [''],
         city: [''],
-        state: [''],
-        zip: ['']
+        state: ['']
       })
     });
+
     submitted = false;
     data: any;
 
-    get diagonastics() {
-      return JSON.stringify(this.employeeForm.value);
+    get getalldata() {
+      return this.employeeForm.value;
+      //return JSON.stringify(this.employeeForm.value);
     }
   
     get name() {
@@ -61,7 +63,7 @@ export class EmployeeComponent implements OnInit {
   
     onSubmit() {
       this.submitted = true;
-      this.data = this.diagonastics;
+      this.data = this.getalldata;
       this.employeeService.send(this.data);
       //this.get_data.send("aaaaaaaaaaaaaaaaa") ;
       this.router.navigateByUrl('/employeedetails');

@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit {
     },
     (error) => {
       console.log(error)
-      this.error = error.message
+      this.error = error.message;
     })
   }
 }
